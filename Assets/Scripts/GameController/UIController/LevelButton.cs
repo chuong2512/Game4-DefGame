@@ -112,8 +112,11 @@ public class LevelButton : MonoBehaviour
         {
             Master.Tutorial.CheckAndContinueNextStepTutorial(TutorialController.TutorialsIndex.BuildUnitInGameplay, 1);
 
-            Master.LevelData.currentLevel = levelIndex;
-            Application.LoadLevel("Play");
+            Master.UI.Transition(() =>
+            {
+                Master.LevelData.currentLevel = levelIndex;
+                Application.LoadLevel("Play");
+            });
         }
         else
         {
