@@ -94,8 +94,11 @@ public class LevelDataController : MonoBehaviour
         {
             levelDataCollection.ListLevelData[i].LevelIndex = i + 1;
         }
-
+#if UNITY_EDITOR && TEST_LEVEL
+        lastLevel = ObscuredPrefs.GetInt("LastLevel", 40);
+#else
         lastLevel = ObscuredPrefs.GetInt("LastLevel", 0);
+#endif
         totalLevel = levelDataCollection.ListLevelData.Count;
         // lastLevel = 2;
     }

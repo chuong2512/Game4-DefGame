@@ -10,6 +10,7 @@ public class UnitController : MonoBehaviour
     public string unitID;
     public UnitDataController.UnitData data;
 
+    [SerializeField] private SpriteOutline _spriteOutline;
     //Unit Status
     [System.Serializable]
     public class Status
@@ -144,6 +145,7 @@ public class UnitController : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         spriteRenderer = Master.GetChildByName(gameObject, "Sprite").GetComponent<SpriteRenderer>();
+        _spriteOutline = Master.GetChildByName(gameObject, "Sprite").GetComponent<SpriteOutline>();
         boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
 
         GameObject pf_general = Master.GetGameObjectInPrefabs("Characters/Units/General");
@@ -785,7 +787,7 @@ public class UnitController : MonoBehaviour
         {
             statusFolder += "Dead";
         }*/
-
+        _spriteOutline.SetOutLine(status.IsUpgraded ? 12 : - 1000);
         statusFolder += $"nv_{data.UnitID}";
         
         string spriteName = spriteRenderer.sprite.name;
@@ -803,6 +805,7 @@ public class UnitController : MonoBehaviour
 
     public void SetColliderSize()
     {
+        return;
         if (status.IsUpgraded)
         {
             boxCollider2D.size = new Vector2(boxCollider2D.size.x * 1.2f, boxCollider2D.size.y);
