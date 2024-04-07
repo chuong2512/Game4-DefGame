@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelButton : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class LevelButton : MonoBehaviour
     private UITexture bgTexture;
     private UITexture starTexture;
     private UILabel levelIndexLabel;
+    public List<GameObject> stars;
 
 
     void Start()
@@ -53,6 +55,7 @@ public class LevelButton : MonoBehaviour
 
     void SetBackground()
     {
+        return;
         if (isActive)
         {
             bgTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Menu/Buttons/BG_LevelButton");
@@ -67,7 +70,8 @@ public class LevelButton : MonoBehaviour
     {
         if (!isActive)
         {
-            starTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Menu/Stars/0");
+            //starTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Menu/Stars/0");
+            SetVisualStars(0);
         }
         else
         {
@@ -78,13 +82,27 @@ public class LevelButton : MonoBehaviour
                 {
                     star = 1;
                 }
-
-                starTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Menu/Stars/" + star);
+                SetVisualStars(star);
+                //starTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Menu/Stars/" + star);
             }
             else if (levelIndex > Master.LevelData.lastLevel)
             {
-                starTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Menu/Stars/0");
+                //starTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Menu/Stars/0");
+                SetVisualStars(0);
             }
+        }
+    }
+
+    private void SetVisualStars(int count)
+    {
+        for (int i = 0; i < count || i < 3; i++)
+        {
+            stars[i].SetActive(true);
+        }
+
+        for (int i = count; i < 3; i++)
+        {
+            stars[i].SetActive(false);
         }
     }
 

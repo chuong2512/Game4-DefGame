@@ -117,6 +117,7 @@ public class TutorialController : MonoBehaviour
 
     public void StartTutorial(int tutorialIndex)
     {
+        return;
         isDoingTutorial = true;
         currentTutorialIndex = tutorialIndex;
 

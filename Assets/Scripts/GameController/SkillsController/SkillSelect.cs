@@ -35,11 +35,11 @@ public class SkillSelect : MonoBehaviour
         countdown = Master.GetChildByName(gameObject, "Countdown").GetComponent<UITexture>();
         if (!isLock)
         {
-            icon.sprite = Resources.Load<Sprite>("Textures/Skills/Skill_" + skillData.SkillID + "/Skill_" + skillData.SkillID + "_Icon");
+            icon.sprite = Resources.Load<Sprite>("Textures/Skills/Skill_" + skillData.SkillID + "/Skill_" + skillData.SkillID + "_Icon_new");
         }
         else
         {
-            icon.sprite = Resources.Load<Sprite>("Textures/Skills/skill_locked");
+            icon.sprite = Resources.Load<Sprite>("Textures/Skills/skill_locked_new");
             icon.color = new Color(1, 1, 1, 0.7f);
             Destroy(icon.gameObject.GetComponent<UIButton>());
         }

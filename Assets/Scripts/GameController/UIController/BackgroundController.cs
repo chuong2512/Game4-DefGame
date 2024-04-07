@@ -34,6 +34,6 @@ public class BackgroundController : MonoBehaviour
         {
             bgIndex = 3;
         }
-        backgroundTexture.mainTexture = Resources.Load<Texture2D>("Textures/Background/bg_stage_" + bgIndex);
+        backgroundTexture.mainTexture = Resources.Load<Texture2D>("Textures/Background/map_" + bgIndex);
     }
 }

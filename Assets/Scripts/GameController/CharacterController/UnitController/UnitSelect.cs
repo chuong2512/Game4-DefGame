@@ -63,12 +63,12 @@ public class UnitSelect : MonoBehaviour
 
         if (!isLock)
         {
-            iconSprite.sprite = Resources.Load<Sprite>("Textures/Characters/Units/Unit_" + unitData.UnitID + "/Icon");
+            iconSprite.sprite = Resources.Load<Sprite>("Textures/Characters/Units/Unit_" + unitData.UnitID + "/icon_new");
 
         }
         else
         {
-            iconSprite.sprite = Resources.Load<Sprite>("Textures/Characters/Units/UnitIconLock");
+            iconSprite.sprite = Resources.Load<Sprite>("Textures/Characters/Units/UnitIconLock_new");
             iconSprite.color = new Color(1, 1, 1, 0.7f);
             Destroy(iconSprite.gameObject.GetComponent<UIButton>());
         }

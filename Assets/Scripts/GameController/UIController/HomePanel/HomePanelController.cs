@@ -112,6 +112,7 @@ public class HomePanelController : MonoBehaviour
 
     void CheckFreeReward()
     {
+        return;
         if (Master.LevelData.lastLevel >= FreeRewardController.levelCanGetFreeReward)
         {
             freeReward.SetActive(true);
