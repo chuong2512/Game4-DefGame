@@ -760,7 +760,7 @@ public class UnitController : MonoBehaviour
     private void SpriteController()
     {
         string statusFolder = "";
-        if (status.IsUpgraded)
+        /*if (status.IsUpgraded)
         {
             statusFolder = "Upgrade/";
         }
@@ -784,8 +784,10 @@ public class UnitController : MonoBehaviour
         else if (action.Dead)
         {
             statusFolder += "Dead";
-        }
+        }*/
 
+        statusFolder += $"nv_{data.UnitID}";
+        
         string spriteName = spriteRenderer.sprite.name;
         string pathToSprite = "Textures/Characters/Units/Unit_" + data.UnitID + "/" + statusFolder + "/" + spriteName;
         spriteRenderer.sprite = Resources.Load<Sprite>(pathToSprite);
