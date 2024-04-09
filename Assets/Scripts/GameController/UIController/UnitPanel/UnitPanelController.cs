@@ -159,7 +159,7 @@ public class UnitPanelController : MonoBehaviour
 
             if (unitData.UnlockAtLevel <= (Master.LevelData.lastLevel + 1))
             {
-                icon.mainTexture = Resources.Load<Texture2D>("Textures/Characters/Units/Unit_" + unitData.UnitID + "/Icon_Upgrade");
+                icon.mainTexture = Resources.Load<Texture2D>("Textures/Characters/Units/Unit_" + unitData.UnitID + "/icon_new");
                 unlockAtLevel.transform.parent.gameObject.SetActive(false);
                 lockIcon.SetActive(false);
                 name = "Unit_" + unitData.UnitID + "_Unlocked";
@@ -168,10 +168,10 @@ public class UnitPanelController : MonoBehaviour
             }
             else
             {
-                icon.mainTexture = Resources.Load<Texture2D>("Textures/Characters/Units/unit_lock");
-                //icon.mainTexture = Resources.Load<Texture2D>("Textures/Characters/Units/Unit_" + unitData.UnitID + "/Icon_Upgrade");
+                //icon.mainTexture = Resources.Load<Texture2D>("Textures/Characters/Units/unit_lock");
+                lockIcon.SetActive(true);
+                icon.mainTexture = Resources.Load<Texture2D>("Textures/Characters/Units/Unit_" + unitData.UnitID + "/icon_new");
                 icon.color = new Color(110 / 255f, 110 / 255f, 110 / 255f, 1f);
-                lockIcon.SetActive(false);
 
                 unlockAtLevel.transform.parent.gameObject.SetActive(false);
                 unlockAtLevel.text = unitData.UnlockAtLevel.ToString();

@@ -67,7 +67,7 @@ public class DialogController : MonoBehaviour
 
     public virtual void ShowBannerAd()
     {
-        if (isShowBannerAd)
+        /*if (isShowBannerAd)
         {
             if (bannerAdPosition == BannerAdPosition.Top)
             {
@@ -81,7 +81,7 @@ public class DialogController : MonoBehaviour
         else
         {
             Master.Ad.Admob.HideBanner();
-        }
+        }*/
     }
 
     public virtual void OnOpen(string[] agruments = null, System.Action onCloseComplete = null)

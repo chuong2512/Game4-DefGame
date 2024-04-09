@@ -139,6 +139,7 @@ public class SocialController : MonoBehaviour
 
     public void ShareFacebook(bool attackPicture = true)
     {
+        return;
         Facebook.ShareLink("http://google.com", "Share Facebook Zombie Defense", "Check Share Facebook Zombie Defense", "https://i.imgsafe.org/30aacd1.png");
         Debug.Log("Share Facebook!");
         /*
@@ -162,6 +163,7 @@ public class SocialController : MonoBehaviour
 
     public void ShareTwitter(bool attackPicture = true)
     {
+        return;
         Debug.Log("Share Twitter!");
         /*
         Master.Gameplay.DisableTouchGameplay();
@@ -192,11 +194,11 @@ public class SocialController : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        Texture2D snap = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        /*Texture2D snap = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
         snap.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         snap.Apply();
-
-        UM_ShareUtility.FacebookShare(GetTextShare(), snap);
+        ret
+        UM_ShareUtility.FacebookShare(GetTextShare(), snap);*/
        // Master.Gameplay.EnableTouchGameplay();
      //   Master.UI.EnableTouchUI();
     }
@@ -204,11 +206,11 @@ public class SocialController : MonoBehaviour
     private IEnumerator TakeScreenShotToShareTwitter()
     {
         yield return new WaitForEndOfFrame();
-        Texture2D snap = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        /*Texture2D snap = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
         snap.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         snap.Apply();
 
-        UM_ShareUtility.TwitterShare(GetTextShare(), snap);
+        UM_ShareUtility.TwitterShare(GetTextShare(), snap);*/
       //  Master.Gameplay.EnableTouchGameplay();
       //  Master.UI.EnableTouchUI();
     }

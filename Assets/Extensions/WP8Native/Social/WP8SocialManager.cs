@@ -1,6 +1,5 @@
 ﻿#define SA_DEBUG_MODE
 using UnityEngine;
-using System.Collections;
 
 public class WP8SocialManager : WPN_Singletone<WP8SocialManager>
 {
@@ -17,7 +16,7 @@ public class WP8SocialManager : WPN_Singletone<WP8SocialManager>
     {
         if (texture == null)
         {
-#if (UNITY_WP8 && !UNITY_EDITOR) || SA_DEBUG_MODE
+/*#if (UNITY_WP8 && !UNITY_EDITOR) || SA_DEBUG_MODE
             WP8Native.Social.FacebookPost(text, "");
 #endif
         }
@@ -27,7 +26,7 @@ public class WP8SocialManager : WPN_Singletone<WP8SocialManager>
             byte[] val = texture.EncodeToPNG();
             string bytesString = System.Convert.ToBase64String(val);
             WP8Native.Social.FacebookPost(text, bytesString);
-#endif
+#endif*/
         }
     }
 
@@ -41,7 +40,7 @@ public class WP8SocialManager : WPN_Singletone<WP8SocialManager>
     {
         if (texture == null)
         {
-#if (UNITY_WP8 && !UNITY_EDITOR) || SA_DEBUG_MODE
+/*#if (UNITY_WP8 && !UNITY_EDITOR) || SA_DEBUG_MODE
             WP8Native.Social.TwitterPost(text, "");
 #endif
         }
@@ -54,7 +53,7 @@ public class WP8SocialManager : WPN_Singletone<WP8SocialManager>
             string bytesString = System.Convert.ToBase64String(val);
 
             WP8Native.Social.TwitterPost(text, bytesString);
-#endif
+#endif*/
         }
 
     }
@@ -66,7 +65,7 @@ public class WP8SocialManager : WPN_Singletone<WP8SocialManager>
 
     public void ShareMedia(string text, Texture2D texture)
     {
-#if (UNITY_WP8 && !UNITY_EDITOR) || SA_DEBUG_MODE
+/*#if (UNITY_WP8 && !UNITY_EDITOR) || SA_DEBUG_MODE
         if (texture != null)
         {
             byte[] val = texture.EncodeToPNG();
@@ -77,7 +76,7 @@ public class WP8SocialManager : WPN_Singletone<WP8SocialManager>
         {
             WP8Native.Social.ShareMedia(text, "");
         }
-#endif
+#endif*/
     }
 
     public void SendMail(string subject, string body, string recipients)
@@ -89,7 +88,7 @@ public class WP8SocialManager : WPN_Singletone<WP8SocialManager>
     {
         if (texture == null)
         {
-#if (UNITY_WP8 && !UNITY_EDITOR) 
+/*#if (UNITY_WP8 && !UNITY_EDITOR) 
 			WP8Native.Social.SendMail(subject, body, recipients, string.Empty);
 #endif
         }
@@ -99,7 +98,7 @@ public class WP8SocialManager : WPN_Singletone<WP8SocialManager>
          //   byte[] val = texture.EncodeToPNG();
           //  string bytesString = System.Convert.ToBase64String(val);
             WP8Native.Social.SendMail(subject, body, recipients, string.Empty);
-#endif
+#endif*/
         }
     }
 }

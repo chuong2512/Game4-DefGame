@@ -11,8 +11,6 @@ public class Master : MonoBehaviour
     //for global controller
     public static Master instance;
     public static AudioController Audio;
-    public static AdController Ad;
-    public static IAPController IAP;
     public static SocialController Social;
     public static TouchController Touch;
     public static EffectController Effect;
@@ -33,7 +31,6 @@ public class Master : MonoBehaviour
     public static LevelDataController LevelData;
     public static LevelController Level;
     public static TutorialController Tutorial;
-    public static PushNotificationController PushNotification;
 
     public static bool isGameStart;
     public static bool isLevelComplete;

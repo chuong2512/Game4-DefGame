@@ -215,8 +215,8 @@ public class LevelCompleteDialog : DialogController
         //Master.WaitAndDo(0.2f, () =>
         // {
         PlayShowHideSound();
-        Master.Ad.Admob.HideBanner();
-        Master.Ad.Admob.ShowInterAd();
+        /*Master.Ad.Admob.HideBanner();
+        Master.Ad.Admob.ShowInterAd();*/
        
         allButtons.SetActive(true);
         allButtons.transform.DOLocalMoveY(-240, 0.2f).SetUpdate(true).OnComplete(() =>
@@ -285,19 +285,12 @@ public class LevelCompleteDialog : DialogController
 
     public void ShareFacebookButton_OnClick()
     {
-        if (!isCanClick) return;
-
-        Master.PlaySoundButtonClick();
-        Master.Social.Facebook.ShareLink("", "I have completed level " + Master.LevelData.currentLevel + " | Special Squad vs Zombies", "Let's play \"Special Squad vs Zombies\" and lead your Special Squad to defeat the Zombies!!!",
-            Master.Social.Facebook.linkImageShareLevelComplete);
+        
     }
 
     public void ShareTwitterButton_OnClick()
     {
-        if (!isCanClick) return;
 
-        Master.PlaySoundButtonClick();
-        Master.Social.ShareTwitter(true);
     }
 
 

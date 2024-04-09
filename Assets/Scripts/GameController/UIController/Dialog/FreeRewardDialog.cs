@@ -28,6 +28,7 @@ public class FreeRewardDialog : DialogController
 
     public override void AssignObjects()
     {
+        return;
         //PlayerPrefs.DeleteAll();
 
         getRandomRewardButton = Master.GetChildByName(gameObject, "Button_GetRandomReward").GetComponent<UIButton>();
@@ -51,6 +52,7 @@ public class FreeRewardDialog : DialogController
 
     public override void OnStart()
     {
+        return;
         SetRandomReward();
         SetShareFacebookReward();
         InvokeRepeating("CheckTime", 0, 1);
@@ -58,6 +60,7 @@ public class FreeRewardDialog : DialogController
 
     void SetRandomReward()
     {
+        return;
         currentRandomReward = FreeRewardController.GetReward(0);
         randomRewardGemLabel.text = currentRandomReward[0].ToString();
         randomRewardStarLabel.text = currentRandomReward[1].ToString();
@@ -65,6 +68,7 @@ public class FreeRewardDialog : DialogController
 
     void SetShareFacebookReward()
     {
+        return;
         if (!FreeRewardController.IsSharedFacebook())
         {
             currentShareFacebookReward = FreeRewardController.GetReward(1);
@@ -75,6 +79,7 @@ public class FreeRewardDialog : DialogController
 
     void CheckTime()
     {
+        return;
         //for time get reward
         valuesRandomReward.SetActive(true);
         titleRandomReward.gameObject.SetActive(false);
@@ -118,27 +123,12 @@ public class FreeRewardDialog : DialogController
 
     public void GetRewardButton_OnClick()
     {
-        Master.Tutorial.CheckAndFinishTutorial(TutorialController.TutorialsIndex.GetFreeReward);
-
-        Master.PlaySoundButtonClick();
-        Close(() =>
-        {
-            Master.Ad.UnityAd.ShowAd(() =>
-            {
-                Master.Stats.Gem += currentRandomReward[0];
-                Master.Stats.Star += currentRandomReward[1];
-                FreeRewardController.SetDateTimeGetReward();
-                Master.QuestData.IncreaseProgressValue("07");
-                Master.PushNotification.SetGetFreeRewardNotification();
-                // SetRandomReward();
-                Master.UIMenu.ShowDialog("GotRewardDialog", 0.3f, new string[] { currentRandomReward[0].ToString(), currentRandomReward[1].ToString() });
-            });
-        });
-
+        return;
     }
 
     public void GetFacebookShareRewardButton_OnClick()
     {
+        //return;
         Master.PlaySoundButtonClick();
         Close(() =>
         {

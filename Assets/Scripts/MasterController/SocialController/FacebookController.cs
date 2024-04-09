@@ -17,13 +17,13 @@ public class FacebookController : MonoBehaviour
     private System.Action onAppInviteComplete;
     private System.Action onAppInviteFail;
 
-    public string linkImageShare = "";
-    public string linkImageShareLevelComplete = "";
-    public string linkImageAppInvite = "";
+    /*public string linkImageShare = "";
+    public string linkImageShareLevelComplete = "";*/
+    /*public string linkImageAppInvite = "";
     public string linkAppInvite = "https://fb.me/799383216863366";
 
     public string titleShareLink = "";
-    public string descriptionShareLink = "";
+    public string descriptionShareLink = "*/
 
     void Start()
     {
@@ -36,7 +36,7 @@ public class FacebookController : MonoBehaviour
 
     private void OnHideUnity(bool isGameShown)
     {
-        if (!isGameShown)
+        /*if (!isGameShown)
         {
             // Pause the game - we will need to hide
             Time.timeScale = 0;
@@ -45,29 +45,29 @@ public class FacebookController : MonoBehaviour
         {
             // Resume the game - we're getting focus again
             Time.timeScale = 1;
-        }
+        }*/
     }
 
     public void Login(System.Action onComplete = null, System.Action onFail = null)
     {
-        onLoginComplete = onComplete;
+        /*onLoginComplete = onComplete;
         onLoginFail = onFail;
-        var perms = new List<string>() {"public_profile", "email", "user_friends"};
+        var perms = new List<string>() {"public_profile", "email", "user_friends"};*/
     }
 
     //share screenshoot
     public void ShareScreenShot(string caption, System.Action onComplete = null, System.Action onFail = null)
     {
-        onShareScreenshotComplete = onComplete;
+        /*onShareScreenshotComplete = onComplete;
         onShareScreenshotFail = onFail;
-        StartCoroutine(TakeScreenshotAndShare(caption));
+        StartCoroutine(TakeScreenshotAndShare(caption));*/
     }
 
     private IEnumerator TakeScreenshotAndShare(string caption)
     {
         yield return new WaitForEndOfFrame();
 
-        var width = Screen.width;
+        /*var width = Screen.width;
         var height = Screen.height;
         var tex = new Texture2D(width, height, TextureFormat.RGB24, false);
         // Read screen contents into the texture
@@ -78,13 +78,13 @@ public class FacebookController : MonoBehaviour
         wwwForm.AddBinaryData("image", screenshot, "InteractiveConsole.png");
         wwwForm.AddField("name", caption);
         Debug.Log("Finish Capture and upload screenshoot");
-        //FB.API("me/photos", Facebook.Unity.HttpMethod.POST, ShareScreenShootCallback, wwwForm);
+        //FB.API("me/photos", Facebook.Unity.HttpMethod.POST, ShareScreenShootCallback, wwwForm);*/
     }
 
     public void ShareLink(string link = "", string title = "", string description = "", string linkImage = "",
         System.Action onComplete = null, System.Action onFail = null)
     {
-        onShareLinkComplete = onComplete;
+        /*onShareLinkComplete = onComplete;
         onShareLinkFail = onFail;
 
         if (link == "")
@@ -105,13 +105,13 @@ public class FacebookController : MonoBehaviour
         if (description == "")
         {
             description = descriptionShareLink;
-        }
+        }*/
     }
 
 
     public void AppInvite(System.Action onComplete = null, System.Action onFail = null)
     {
-        this.onAppInviteComplete = onComplete;
-        this.onAppInviteFail = onFail;
+        /*this.onAppInviteComplete = onComplete;
+        this.onAppInviteFail = onFail;*/
     }
 }

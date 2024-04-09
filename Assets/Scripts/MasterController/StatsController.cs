@@ -89,8 +89,6 @@ public class StatsController : MonoBehaviour
 
             SaveData();
 
-            Master.PushNotification.SetEnergyNotification();
-
         }
     }
     private ObscuredInt firstGemPerEnergy = 10;

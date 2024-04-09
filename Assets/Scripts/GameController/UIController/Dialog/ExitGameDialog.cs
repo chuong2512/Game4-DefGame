@@ -5,7 +5,7 @@ public class ExitGameDialog : DialogController
 {
     public override void OnStart()
     {
-        Master.PushNotification.SetAllNotification();
+       
     }
 
     public void Button_Onclick(GameObject go)

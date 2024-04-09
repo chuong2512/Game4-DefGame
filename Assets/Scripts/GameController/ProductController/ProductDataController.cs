@@ -68,10 +68,11 @@ public class ProductDataController : MonoBehaviour
 
     public void SetProductDataToUltimateMobile()
     {
+        return;/*
         foreach (ProductData product in listProductData)
         {
             Master.IAP.AddProduct(product.ProductID, product.ProductSKU, product.IsConsumable);
-        }
+        }*/
     }
 
     public ProductData GetProductDataByID(string id)

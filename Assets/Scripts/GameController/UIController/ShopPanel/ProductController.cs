@@ -53,8 +53,8 @@ public class ProductController : MonoBehaviour
 
     public void OnTouchIn()
     {
-
-        Master.IAP.PurchaseProduct(productData.ProductID, () =>
+        //todo iap in here
+        /*Master.IAP.PurchaseProduct(productData.ProductID, () =>
         {
             if (productData.Type == "Gem")
             {
@@ -64,7 +64,7 @@ public class ProductController : MonoBehaviour
             {
                 Master.Stats.Star += productData.Value;
             }
-        });
+        });*/
     }
 
 }
