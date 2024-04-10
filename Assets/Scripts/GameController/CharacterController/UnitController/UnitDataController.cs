@@ -321,6 +321,12 @@ public class UnitDataController : MonoBehaviour
     public void CheckUnitUnlock(System.Action actionAfterClose = null)
     {
         UnitDataController.UnitData[] listUnitUnlock = Master.UnitData.GetUnlockUnitAtLevel(Master.LevelData.lastLevel + 1);
+        if (actionAfterClose != null)
+        {
+            actionAfterClose();
+        }
+
+        return;
         if (listUnitUnlock == null)
         {
             if (actionAfterClose != null)

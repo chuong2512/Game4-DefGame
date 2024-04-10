@@ -153,6 +153,7 @@ public class UIControllerMenu : UIController
                 {
                     titlePanel.text = titleOfPanel[index];
                 }
+                backButton.SetActive(index != 0);
 
             }, null);
         }

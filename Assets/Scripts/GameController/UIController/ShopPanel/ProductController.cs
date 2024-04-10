@@ -65,9 +65,8 @@ public class ProductController : MonoBehaviour
                 Master.Stats.Star += productData.Value;
             }
         });*/
-        
+        IAPManager.OnPurchaseSuccess = Buy;
         IAPManager.Instance.BuyProductID(productData.ProductID);
-        IAPManager.OnPurchaseSuccess += Buy;
     }
 
     private void Buy()

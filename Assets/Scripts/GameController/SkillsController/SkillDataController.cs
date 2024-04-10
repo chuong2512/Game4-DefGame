@@ -196,6 +196,12 @@ public class SkillDataController : MonoBehaviour
     public void CheckSkillUnlock(System.Action actionAfterClose = null)
     {
         SkillData[] listSkillsUnlock = GetUnlockSkillAtLevel(Master.LevelData.lastLevel + 1);
+        if (actionAfterClose != null)
+        {
+            actionAfterClose();
+        }
+
+        return;
         if (listSkillsUnlock == null)
         {
             if (actionAfterClose != null)

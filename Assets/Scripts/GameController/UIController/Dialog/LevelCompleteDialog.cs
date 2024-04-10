@@ -88,7 +88,7 @@ public class LevelCompleteDialog : DialogController
             }
 
             //set Status icon
-            completeStatusTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Dialog/LevelComplete/victory");
+            completeStatusTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Dialog/LevelComplete/victory_new");
 
             //save level data
             gemRewardValue = RewardController.GetGemReward(Master.LevelData.currentLevel, star);
@@ -103,7 +103,7 @@ public class LevelCompleteDialog : DialogController
             Master.Audio.PlaySound("snd_defeat", 0.3f);
 
             star = 0;
-            completeStatusTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Dialog/LevelComplete/defeat");
+            completeStatusTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Dialog/LevelComplete/defeat_new");
             starRewardLabel.text = "0";
             gemRewardLabel.text = "0";
             NGUITools.Destroy(nextButton);

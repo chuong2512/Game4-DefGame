@@ -134,6 +134,12 @@ public class Master : MonoBehaviour
 
     public void CheckShowRatingDialog(System.Action actionAfterClose = null)
     {
+        if (actionAfterClose != null)
+        {
+            actionAfterClose();
+        }
+
+        return;
         if (Master.Stats.isClickedRating)
         {
             if (actionAfterClose != null)
@@ -145,6 +151,7 @@ public class Master : MonoBehaviour
         {
             if (Master.Stats.TimesLevelComplete % timesLevelCompleteToShowRatingDialog == 0)
             {
+                
                 Master.UI.ShowDialog(UIController.Dialog.ListDialogs.RatingDialog, 0.3f, null, null, actionAfterClose);
             }
             else
