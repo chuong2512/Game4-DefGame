@@ -3,7 +3,7 @@
   <Units>
     <Unit>
       <UnitID>01</UnitID>
-      <UnitName>Double Pistol</UnitName>
+      <UnitName>Machine Gun</UnitName>
       <Health>100</Health>
       <Damage>20</Damage>
       <AttackSpeed>35</AttackSpeed>

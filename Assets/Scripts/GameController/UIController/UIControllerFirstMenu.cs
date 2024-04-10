@@ -33,6 +33,7 @@ public class UIControllerFirstMenu : UIController
     public void Button_OnClick(GameObject go)
     {
         Master.PlaySoundButtonClick();
+        return;
         switch (go.name)
         {
             case "Button_Play":

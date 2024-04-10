@@ -19,7 +19,7 @@ public class ProductDataController : MonoBehaviour
     public class ProductData
     {
         public string ProductID = "";
-        public string ProductSKU = "";
+        public string ProductIcon = "";
         public bool IsConsumable;
         public string Type;
         public int Value;

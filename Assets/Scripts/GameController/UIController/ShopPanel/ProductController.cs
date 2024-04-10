@@ -39,14 +39,14 @@ public class ProductController : MonoBehaviour
 
         if (productData.Type == "Gem")
         {
-            iconTypeTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/gem_icon");
+            iconTypeTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/gem_icon_new");
         }
         else if (productData.Type == "Star")
         {
-            iconTypeTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/star_icon");
+            iconTypeTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/star_icon_new");
         }
 
-        iconTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Menu/ProductsIcon/" + productData.ProductID);
+        iconTexture.mainTexture = Resources.Load<Texture2D>("Textures/UI/Menu/ProductsIcon/" + productData.ProductIcon);
         valueLabel.text = productData.Value.ToString();
         priceLabel.text = "$" + productData.Price.ToString();
     }
@@ -65,6 +65,21 @@ public class ProductController : MonoBehaviour
                 Master.Stats.Star += productData.Value;
             }
         });*/
+        
+        IAPManager.Instance.BuyProductID(productData.ProductID);
+        IAPManager.OnPurchaseSuccess += Buy;
+    }
+
+    private void Buy()
+    {
+        if (productData.Type == "Gem")
+        {
+            Master.Stats.Gem += productData.Value;
+        }
+        if (productData.Type == "Star")
+        {
+            Master.Stats.Star += productData.Value;
+        }
     }
 
 }

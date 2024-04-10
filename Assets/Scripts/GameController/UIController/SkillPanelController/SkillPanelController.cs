@@ -17,6 +17,7 @@ public class SkillPanelController : MonoBehaviour
         public List<UITexture> listUpgradeProgressTexture = new List<UITexture>();
         public UIPanel upgradeSkillButtonPanel;
         public UILabel gemRequireLabel;
+        public GameObject lockIcon;
     }
 
     public class Skill_01_Assign : Skill_Assign
@@ -82,6 +83,7 @@ public class SkillPanelController : MonoBehaviour
             {
                 listSkillAssign[i].listUpgradeProgressTexture.Add(item.gameObject.GetComponent<UITexture>());
             }
+            listSkillAssign[i].lockIcon = Master.GetChildByName(listSkillAssign[i].skillPanel, "lockIcon");
             listSkillAssign[i].upgradeSkillButtonPanel = Master.GetChildByName(listSkillAssign[i].skillPanel, "UpgradeButton").GetComponent<UIPanel>();
             listSkillAssign[i].gemRequireLabel = Master.GetChildByName(listSkillAssign[i].upgradeSkillButtonPanel.gameObject, "GemRequireValueLabel").GetComponent<UILabel>();
         }
@@ -104,11 +106,7 @@ public class SkillPanelController : MonoBehaviour
 
         for (int i = 0; i < listSkillAssign.Count; i++)
         {
-            bool isUnlock = false;
-            if ((Master.LevelData.lastLevel + 1) >= Master.SkillData.listSkillsData[i].UnlockAtLevel)
-            {
-                isUnlock = true;
-            }
+            bool isUnlock = (Master.LevelData.lastLevel + 1) >= Master.SkillData.listSkillsData[i].UnlockAtLevel;
 
             string skillID = "0" + (i + 1);
             listSkillAssign[i].timeCountdownLabel.text = Master.SkillData.listSkillsData[i].TimeCountdown.ToString();
@@ -117,15 +115,16 @@ public class SkillPanelController : MonoBehaviour
 
             if (isUnlock)
             {
-                listSkillAssign[i].iconTexture.mainTexture = Resources.Load<Texture2D>("Textures/Skills/Skill_" + skillID + "/Skill_" + skillID + "_Icon");
+                //listSkillAssign[i].iconTexture.mainTexture = Resources.Load<Texture2D>("Textures/Skills/Skill_" + skillID + "/Skill_" + skillID + "_Icon");
                 listSkillAssign[i].skillInfo.SetActive(true);
                 listSkillAssign[i].unlockAtLevelLabel.gameObject.SetActive(false);
+                listSkillAssign[i].lockIcon.SetActive(false);
                 listSkillAssign[i].gemRequireLabel.text = Master.SkillData.GetGemRequireUpgrade(skillID).ToString();
             }
             else
             {
-
-                listSkillAssign[i].iconTexture.mainTexture = Resources.Load<Texture2D>("Textures/Skills/skill_locked");
+                listSkillAssign[i].lockIcon.SetActive(true);
+                //listSkillAssign[i].iconTexture.mainTexture = Resources.Load<Texture2D>("Textures/Skills/skill_locked");
                 listSkillAssign[i].skillInfo.SetActive(false);
                 listSkillAssign[i].unlockAtLevelLabel.gameObject.SetActive(true);
                 listSkillAssign[i].unlockAtLevelLabel.text = "Unlock at level " + Master.SkillData.listSkillsData[i].UnlockAtLevel;
