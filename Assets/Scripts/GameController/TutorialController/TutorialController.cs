@@ -86,7 +86,7 @@ public class TutorialController : MonoBehaviour
     public bool CheckAndStartTutorial(int tutorialIndex, Vector3 arrowPosition, bool isAutoFinish = false, float timeAutoFinish = -1)
     {
         if (isDoingTutorial) return false;
-
+        return false;
         if (!IsTutorialDone(tutorialIndex))
         {
             StartTutorial(tutorialIndex);
