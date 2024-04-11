@@ -70,6 +70,7 @@ public class TutorialController : MonoBehaviour
 
     public bool CheckAndStartTutorial(int tutorialIndex)
     {
+        return false;
         if (isDoingTutorial) return false;
 
         if (!IsTutorialDone(tutorialIndex))
@@ -144,6 +145,7 @@ public class TutorialController : MonoBehaviour
 
     public bool CheckAndContinueNextStepTutorial(int tutorialIndex, int stepIndex = -1)
     {
+        return false;
         if (Master.Tutorial.isDoingTutorial && Master.Tutorial.currentTutorialIndex == tutorialIndex)
         {
             GoToNextStep(stepIndex);
