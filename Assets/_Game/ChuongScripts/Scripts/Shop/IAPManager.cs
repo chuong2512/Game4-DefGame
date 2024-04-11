@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using ChuongCustom;
+using Samsung;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Security;
@@ -19,7 +20,7 @@ public class IAPKey
 
 public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
 {
-    private static IStoreController storeController;
+      private static IStoreController storeController;
     private static IExtensionProvider extensionProvider;
     public static Action OnPurchaseSuccess;
 
@@ -28,6 +29,47 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
     private void Start()
     {
         InitIAP();
+        SamsungIAP.Instance.GetOwnedList(ItemType.all, OnGetOwnedList);
+    }
+
+    void OnGetOwnedList(OwnedProductList _ownedProductList)
+    {
+        if (_ownedProductList.errorInfo != null)
+        {
+            if (_ownedProductList.errorInfo.errorCode == 0)
+            {
+                // 0 means no error
+                if (_ownedProductList.results != null)
+                {
+                    foreach (OwnedProductVo item in _ownedProductList.results)
+                    {
+                        //consume the consumable items and OnConsume callback is triggered afterwards
+                        SamsungIAP.Instance.ConsumePurchasedItems(item.mPurchaseId, OnConsume);
+                    }
+                }
+            }
+        }
+    }
+
+    void OnConsume(ConsumedList _consumedList)
+    {
+        if (_consumedList.errorInfo != null)
+        {
+            if (_consumedList.errorInfo.errorCode == 0)
+            {
+                if (_consumedList.results != null)
+                {
+                    foreach (ConsumeVo item in _consumedList.results)
+                    {
+                        if (item.mStatusCode == 0)
+                        {
+                            //successfully consumed and ready to be purchased again.
+                            SamsungIAP.Instance.ConsumePurchasedItems(item.mPurchaseId, null);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void InitIAP()
@@ -55,7 +97,6 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
         builder.AddProduct(IAPKey.PACK6, ProductType.Consumable);
         builder.AddProduct(IAPKey.PACK7, ProductType.Consumable);
         builder.AddProduct(IAPKey.PACK8, ProductType.Consumable);
-
         UnityPurchasing.Initialize(this, builder);
     }
 
@@ -89,17 +130,34 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
                 Debug.Log("BuyProductID FAIL. Not initialized.");
             }
 #endif
+
+        SamsungIAP.Instance.StartPayment(productId, "", OnPayment);
+    }
+
+    void OnPayment(PurchasedInfo _purchaseInfo)
+    {
+        if (_purchaseInfo.errorInfo != null)
+        {
+            if (_purchaseInfo.errorInfo.errorCode == 0)
+            {
+                if (_purchaseInfo.results != null)
+                {
+                    //your purchase is successful
+                    if (_purchaseInfo.results.mConsumableYN == "Y")
+                    {
+                        //consume the consumable items
+                        SamsungIAP.Instance.ConsumePurchasedItems(_purchaseInfo.results.mPurchaseId, OnConsume);
+                        OnPurchaseComplete("");
+                    }
+                }
+            }
+        }
     }
 
     private bool IsInitialized()
     {
         // Only say we are initialized if both the Purchasing references are set.
         return storeController != null && extensionProvider != null;
-        ;
-    }
-
-    public void OnPurchaseFailed(UnityEngine.Purchasing.Product product, PurchaseFailureReason failureReason)
-    {
     }
 
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
@@ -161,7 +219,8 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
 #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
         // Prepare the validator with the secrets we prepared in the Editor
         // obfuscation window.
-        var validator = new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
+        var validator =
+            new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
         try
         {
             // On Google Play, result has a single product ID.
@@ -244,5 +303,11 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
         if (storeController != null)
             return storeController.products.WithID(key).metadata.localizedPriceString;
         return defaultPriceText;
+    }
+
+    public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
+    {
+        Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}",
+            product.definition.storeSpecificId, failureReason));
     }
 }
