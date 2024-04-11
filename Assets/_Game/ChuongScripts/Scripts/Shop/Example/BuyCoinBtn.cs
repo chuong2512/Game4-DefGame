@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace ChuongCustom
@@ -7,7 +8,7 @@ namespace ChuongCustom
     public class BuyCoinBtn : BaseIAPButton
     {
         [SerializeField] private int _amount;
-        [SerializeField] private Button _button;
+        [FormerlySerializedAs("_button")] [SerializeField] private Button button;
         [SerializeField] private TextMeshProUGUI _amountText;
 
         private PlayerData _player;
@@ -16,7 +17,7 @@ namespace ChuongCustom
         {
             _player = GameDataManager.Instance.playerData;
 
-            _button.onClick.AddListener(OnClickButton);
+            button.onClick.AddListener(OnClickButton);
 
             _amountText.text = $"x{_amount}";
         }

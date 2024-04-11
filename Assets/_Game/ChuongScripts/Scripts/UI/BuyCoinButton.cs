@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BuyCoinButton : MonoBehaviour
 {
-    [SerializeField] private Button _button;
+    [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI _text;
 
     [SerializeField] private int _index;
@@ -29,7 +29,7 @@ public class BuyCoinButton : MonoBehaviour
 
     private void Start()
     {
-        _button?.onClick.AddListener(OnClickButton);
+        button?.onClick.AddListener(OnClickButton);
     }
 
     private void SetDataWithIndex()

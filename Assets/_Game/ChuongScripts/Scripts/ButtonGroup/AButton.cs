@@ -7,12 +7,12 @@ namespace ChuongCustom
 {
     public abstract class AButton : MonoBehaviour
     {
-        [SerializeField] private Button _button;
+        [SerializeField] private Button button;
 
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            _button = GetComponent<Button>();
+            button = GetComponent<Button>();
         }
 #endif
 
@@ -24,12 +24,12 @@ namespace ChuongCustom
 
         public void SetListener(UnityAction action)
         {
-            _button.onClick.AddListener(action);
+            button.onClick.AddListener(action);
         }
         
         private void OnDestroy()
         {
-            _button.onClick.RemoveAllListeners();
+            button.onClick.RemoveAllListeners();
         }
 
         protected abstract void OnClickButton();

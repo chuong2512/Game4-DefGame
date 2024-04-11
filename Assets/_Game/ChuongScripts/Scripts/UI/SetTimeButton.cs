@@ -1,11 +1,12 @@
 using ChuongCustom;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SetTimeButton : MonoBehaviour
 {
-    [SerializeField] private Button _button;
+    [FormerlySerializedAs("_button")] [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI _text;
 
     private float _time;
@@ -17,7 +18,7 @@ public class SetTimeButton : MonoBehaviour
 
     private void Start()
     {
-        _button?.onClick.AddListener(OnClickButton);
+        button?.onClick.AddListener(OnClickButton);
     }
 
     private void OnClickButton()

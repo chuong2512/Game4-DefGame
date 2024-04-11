@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class OpenPopupButton : MonoBehaviour
 {
-    private Button _button;
+    private Button _buttonClick;
 
     [SerializeField] private ScreenType _screenType;
 
     void Start()
     {
-        _button = GetComponent<Button>();
-        _button.onClick.AddListener(OnClickButton);
+        _buttonClick = GetComponent<Button>();
+        _buttonClick.onClick.AddListener(OnClickButton);
     }
 
     private void OnClickButton()

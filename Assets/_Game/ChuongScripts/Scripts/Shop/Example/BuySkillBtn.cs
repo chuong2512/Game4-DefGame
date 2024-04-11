@@ -1,6 +1,7 @@
 ﻿using System;
 using ChuongCustom;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace ChuongCustom
@@ -9,7 +10,7 @@ namespace ChuongCustom
     {
         [SerializeField] private int id = 0;
         [SerializeField] private int _amount = 1, _price = 500;
-        [SerializeField] private Button _button;
+        [FormerlySerializedAs("_button")] [SerializeField] private Button button;
         [SerializeField] private Text _amountText, _priceText;
 
         private PlayerData _player;
