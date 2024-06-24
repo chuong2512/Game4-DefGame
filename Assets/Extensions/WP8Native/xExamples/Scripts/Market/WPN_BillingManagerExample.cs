@@ -24,7 +24,7 @@ public class WPN_BillingManagerExample : MonoBehaviour {
 
 
 	public static void Purchase(string productId) {
-		WP8InAppPurchasesManager.instance.purchase(productId);
+		IAPManager.Instance.BuyProductID(productId);
 	}
 
 
